@@ -3254,9 +3254,9 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'owner': case 'creator': case 'sihilel': case 'hiruu': {
-                reply(`🕊️♥️𝙼𝚈 𝙾𝚆𝙽𝙴𝚁 𝙸𝚂⫸ `+global.ownername+`😉\n\nWa.me/`+global.owner+`\n\n🔥༺HIRUU༒QUEEN༻🔥`, m)
 		    result = fs.readFileSync(`./GojoMedia/vn/owner.mp3`)
 		    GojoMdNx.sendMessage(m.chat, {audio: result, minetype: 'audio/mp4' , ptt: true}, {quoted: m})
+		    reply(`🕊️♥️𝙼𝚈 𝙾𝚆𝙽𝙴𝚁 𝙸𝚂⫸ `+global.ownername+`😉\n\nWa.me/`+global.owner+`\n\n🔥༺HIRUU☬QUEEN༻🔥`, m)
             }
             break
 case 'cry':case 'kill':case 'hug':case 'pat':case 'lick':case 'kiss':case 'bite':case 'yeet':case 'neko':case 'bully':case 'bonk':case 'wink':case 'poke':case 'nom':case 'slap':case 'smile':case 'wave':case 'awoo':case 'blush':case 'smug':case 'glomp':case 'happy':case 'dance':case 'cringe':case 'cuddle':case 'highfive':case 'shinobu':case 'megumin':case 'handhold':
@@ -3296,7 +3296,7 @@ reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, 
 	case 'info': case 'about': {
 		GojoMdNx.sendMessage(from, { text: `Try for this!\n🔥༺HIRUU༒QUEEN༻🔥\n\nhttps://sites.google.com/view/hiruu-queen-bot/home` }, { quoted: m })
 		result = fs.readFileSync(`./GojoMedia/vn/info.mp3`)
-		GojoMdNx.sendAudio(m.chat, {audio: result, minetype: 'audio/mp4' , ptt: true}, {quoted: m})
+		GojoMdNx.send(m.chat, {audio: result, minetype: 'audio/mp4' , ptt: true}, {quoted: m})
 	}
                     break
                      case 'alive': case 'bot': case 'hiruu bot': {
