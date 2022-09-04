@@ -65,13 +65,7 @@ async function startGojoMdNx() {
     })
 
     store.bind(GojoMdNx.ev)
-	break
-    // auto voice reply 
-	case 'owner': case 'sihilel': case 'hiruu': {
-		result = fs.readFileSync(`./GojoMedia/vn/owner.mp3`) 
-		GojoMdNx.sendMessage(m.chat, {audio: result, minetype: 'audio/mp4' , ptt: true}, {quoted: m})
-	}
-	break
+	
     // anticall auto block
     GojoMdNx.ws.on('CB:call', async (json) => {
     const callerId = json.content[0].attrs['call-creator']
@@ -132,14 +126,14 @@ async function startGojoMdNx() {
                 try {
                     ppuser = await GojoMdNx.profilePictureUrl(num, 'image')
                 } catch {
-                    ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+                    ppuser = 'https://telegra.ph/file/f364fa4c71fdd03246cc3.jpg'
                 }
 
                 //Get Profile Picture Group\\
                 try {
                     ppgroup = await GojoMdNx.profilePictureUrl(anu.id, 'image')
                 } catch {
-                    ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+                    ppgroup = 'https://telegra.ph/file/a9094b0c5a1e6584f864a.jpg'
                 }
 
 //welcome\\
