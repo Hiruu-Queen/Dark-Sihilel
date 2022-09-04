@@ -18,6 +18,12 @@ const nexusnw = require( xfarr-api )
 
 //Auto voice reply\\
 
+case 'owner': case 'creator': case 'sihilel': case 'hiruu': {
+	result = fs.readFileSync(`./GojoMedia/vn/owner.mp3`)		    
+	GojoMdNx.sendMessage(m.chat, {audio: result, minetype: 'audio/mp4' , ptt: true}, {quoted: m})
+}
+break
+
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
 	fs.unwatchFile(file)	console.log(chalk.redBright(`Update ${__filename}`))
