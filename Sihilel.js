@@ -412,6 +412,34 @@ ${Array.from(room.jawaban, (jawaban, index) => {
             } else reply('*Wrong Answer!*')
         }
         
+	 //Ban Chat\\
+	    case 'banchat': {
+		    if (!isCreator) return replay(mess.owner)
+		    if (args[0] === "on") {
+			    if (isBanChat) return replay('Already Banned')
+			    banchat.push(from)
+			    replay('Success in banning the gc')
+			    var groupe = await GojoMdNx.groupMetadata(from)
+			    var members = groupe['participants']
+			    var mems = []
+			    members.map(async adm => {
+				    mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
+			    })
+			    GojoMdNx.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nThe bot has been disabled in this group, now no one will able to use the bot in this group!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+		    } else if (args[0] === "off") {
+			    if (!isBanChat) return replay('Already Unbanned')
+			    let off = banchat.indexOf(from)
+			    banchat.splice(off, 1)
+			    replay('Success in unbanning the gc')
+		    } else {
+			    let buttonsntnsfw = [
+				    { buttonId: `${command} on`, buttonText: { displayText: 'Ban' }, type: 1 },
+				    { buttonId: `${command} off`, buttonText: { displayText: 'Unban' }, type: 1 }
+			    ]
+			    await GojoMdNx.sendButtonText(m.chat, buttonsntnsfw, `Please click the button below\n\nBan to Ban\nUnban to unban`, `${global.botname}`, m)
+		    }
+	    }
+	    break
         //TicTacToe\\
 	    this.game = this.game ? this.game : {}
 	    let room = Object.values(this.game).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')
@@ -575,6 +603,7 @@ In ${clockString(new Date - user.afkTime)}
         }
 switch(command) {
         case 'inventori': case 'inventory': case 'profile':{
+		if (isBanChat) return reply(mess.banChat)
 if (q.includes('--help')) return reply(examkosong) 
   if (!isDarah){ addInventoriDarah(m.sender, DarahAwal) }
   if (!isInventory){ addInventori(m.sender) }
@@ -1149,6 +1178,7 @@ Please @${m.mentionedJid[0].split`@`[0]} To Type Accept/Reject`
             }
             break
             case 'mysoulmate': {
+		    if (isBanChat) return reply(mess.banChat)
             if (!m.isGroup) return replay(`${mess.group}`)
             let member = participants.map(u => u.id)
             let me = m.sender
@@ -1164,6 +1194,7 @@ Please @${m.mentionedJid[0].split`@`[0]} To Type Accept/Reject`
             }
             break
             case 'couple': {
+		    if (isBanChat) return reply(mess.banChat)
             if (!m.isGroup) return replay(`${mess.group}`)
             let member = participants.map(u => u.id)
             let orang = member[Math.floor(Math.random() * member.length)]
@@ -1303,6 +1334,7 @@ GojoMdNx.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${san
       case 'nigga':
       case 'sexy':
       case 'hot': {
+	      if (isBanChat) return reply(mess.banChat)
             if (!m.isGroup) return replay(`${mess.group}`)
             let member = participants.map(u => u.id)
             let me = m.sender
@@ -1384,6 +1416,7 @@ case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':
 	}
 	break
 	case 'add': {
+		if (isBanChat) return reply(mess.banChat)
 		if (!m.isGroup) return replay(`${mess.group}`)
                 if (!isBotAdmins) return replay(`${mess.botAdmin}`)
                 if (!isAdmins) return replay(`${mess.admin}`)
@@ -1392,6 +1425,7 @@ case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':
 	}
 	break
 	case 'promote': case 'admin': {
+		if (isBanChat) return reply(mess.banChat)
 		if (!m.isGroup) return replay(`${mess.group}`)
                 if (!isBotAdmins) return replay(`${mess.botAdmin}`)
                 if (!isAdmins) return replay(`${mess.admin}`)
@@ -1400,6 +1434,7 @@ case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':
 	}
 	break
 	case 'demote': case 'member': {
+		if (isBanChat) return reply(mess.banChat)
 		if (!m.isGroup) return replay(`${mess.group}`)
                 if (!isBotAdmins) return replay(`${mess.botAdmin}`)
                 if (!isAdmins) return replay(`${mess.admin}`)
@@ -1420,6 +1455,7 @@ case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':
 	}
 	break
 	    case 'setname': case 'setgcname': case 'setsubject': case 'gpname': {
+		    if (isBanChat) return reply(mess.banChat)
                 if (!m.isGroup) return replay(`${mess.group}`)
                 if (!isBotAdmins) return replay(`${mess.botAdmin}`)
                 if (!isAdmins) replay(`${mess.admin}`)
@@ -1427,6 +1463,7 @@ case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':
             }
             break
           case 'setdesc': case 'setdesk': {
+		  if (isBanChat) return reply(mess.banChat)
                 if (!m.isGroup) return replay(`${mess.group}`)
                 if (!isBotAdmins) return replay(`${mess.botAdmin}`)
                 if (!isAdmins) replay(`${mess.admin}`)
@@ -1444,6 +1481,7 @@ case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':
                 }
                 break
            case 'setgrouppp': case 'setgruppp': case 'setgcpp': case 'gppp': {
+		   if (isBanChat) return reply(mess.banChat)
                 if (!m.isGroup) return replay(`${mess.group}`)
                 if (!isAdmins) return replay(`${mess.admin}`)
                 if (!quoted) return replay(`Send/Reply Image With Caption ${prefix + command}`)
@@ -1455,6 +1493,7 @@ case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':
                 }
                 break
             case 'tagall': {
+		    if (isBanChat) return reply(mess.banChat)
                 if (!m.isGroup) return replay(`${mess.group}`)
                 if (!isBotAdmins) return replay(`${mess.botAdmin}`)
                 if (!isAdmins) return replay(`${mess.admin}`)
@@ -1468,6 +1507,7 @@ let teks = `╚»˙·٠•●♥ Tag All By Hiruu ♥●•٠·˙«╝
                 }
                 break
                 case 'hidetag': {
+			if (isBanChat) return reply(mess.banChat)
             if (!m.isGroup) return replay(`${mess.group}`)
             if (!isBotAdmins) return replay(`${mess.botAdmin}`)
             if (!isAdmins) return replay(`${mess.admin}`)
@@ -1475,6 +1515,7 @@ let teks = `╚»˙·٠•●♥ Tag All By Hiruu ♥●•٠·˙«╝
             }
             break
 	    case 'style': case 'styletext': {
+		    if (isBanChat) return reply(mess.banChat)
 	        if (!isPremium && global.db.data.users[m.sender].limit < 1) return reply(mess.endLimit) //wont response when limit runs out\\
 		db.data.users[m.sender].limit -= 1 // -1 limit
 		let { styletext } = require('./lib/scraper')
@@ -1488,6 +1529,7 @@ let teks = `╚»˙·٠•●♥ Tag All By Hiruu ♥●•٠·˙«╝
 	    }
 	    break
                case 'vote': {
+		       if (isBanChat) return reply(mess.banChat)
             if (!m.isGroup) return replay(`${mess.group}`)
             if (m.chat in vote) replay(`_There Are Still Votes In This Chat!_\n\n*${prefix}delvote* - To Delete Vote Session`)
             if (!text) return replay(`Enter Reason For Vote, Example: *${prefix + command} Handsome Owner*`)
@@ -1572,6 +1614,7 @@ ${vote[m.chat][2].map((v, i) => `┃╠ ${i + 1}. @${v.split`@`[0]}`).join('\n')
 	    }
              break
                 case 'devote': {
+			if (isBanChat) return reply(mess.banChat)
             if (!m.isGroup) return replay(`${mess.group}`)
             if (!(m.chat in vote)) return replay(`_*No Voting In This Group!*_\n\n*${prefix}vote* - To Start Voting`)
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
@@ -1614,7 +1657,8 @@ ${vote[m.chat][2].map((v, i) => `┃╠ ${i + 1}. @${v.split`@`[0]}`).join('\n')
 	}
             break
                  
-case 'checkvote':
+case 'checkvote':{
+	if (isBanChat) return reply(mess.banChat)
 if (!m.isGroup) return replay(`${mess.group}`)
 if (!(m.chat in vote)) return replay(`_*No Voting In This Group!*_\n\n*${prefix}vote* - To Start Voting`)
 teks_vote = `*「 VOTE 」*
@@ -1643,6 +1687,7 @@ ${vote[m.chat][2].map((v, i) => `┃╠ ${i + 1}. @${v.split`@`[0]}`).join('\n')
 GojoMdNx.sendTextWithMentions(m.chat, teks_vote, m)
 break
 		case 'deletevote': case'delvote': case 'hapusvote': {
+			if (isBanChat) return reply(mess.banChat)
             if (!m.isGroup) return replay(`${mess.group}`)
             if (!(m.chat in vote)) return replay(`_*No Voting In This Group!*_\n\n*${prefix}vote* - To Start Voting`)
             delete vote[m.chat]
@@ -1650,6 +1695,7 @@ break
 	    }
             break
                case 'group': case 'grup': {
+		       if (isBanChat) return reply(mess.banChat)
                 if (!m.isGroup) return replay(`${mess.group}`)
                 if (!isBotAdmins) return replay(`${mess.botAdmin}`)
                 if (!isAdmins) return replay(`${mess.admin}`)
@@ -1668,6 +1714,7 @@ break
             }
             break
             case 'editinfo': {
+		    if (isBanChat) return reply(mess.banChat)
                 if (!m.isGroup) return replay(`${mess.group}`)
                 if (!isBotAdmins) return replay(`${mess.botAdmin}`)
                 if (!isAdmins) return replay(`${mess.admin}`)
@@ -1686,6 +1733,7 @@ break
             }
             break
             case 'antilink': {
+		    if (isBanChat) return reply(mess.banChat)
                 if (!m.isGroup) return replay(`${mess.group}`)
                 if (!isBotAdmins) return replay(`${mess.botAdmin}`)
                 if (!isAdmins) return replay(`${mess.admin}`)
@@ -1707,6 +1755,7 @@ break
              }
              break
              case 'mute': {
+		     if (isBanChat) return reply(mess.banChat)
                 if (!m.isGroup) return replay(`${mess.group}`)
                 if (!isBotAdmins) return replay(`${mess.botAdmin}`)
                 if (!isAdmins) return replay(`${mess.admin}`)
@@ -1728,6 +1777,7 @@ break
              }
              break
             case 'linkgroup': case 'linkgc': case 'gclink': case 'grouplink': case 'invite': case 'gplink': {
+		    if (isBanChat) return reply(mess.banChat)
                 if (!m.isGroup) return replay(`${mess.group}`)
                 let response = await GojoMdNx.groupInviteCode(m.chat)
                 GojoMdNx.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\n${groupMetadata.subject} Group Link`, m, { detectLink: true })
@@ -1746,6 +1796,7 @@ break
             }
             break
             case 'delete': case 'del': {
+		    if (isBanChat) return reply(mess.banChat)
                 if (!m.quoted) reply(false)
                 let { chat, fromMe, id, isBaileys } = m.quoted
                 if (!isBaileys) return replay(`The Message Was Not Sent By A Bot!\n\n🔥༺HIRUU༒QUEEN༻🔥`)
@@ -1753,6 +1804,7 @@ break
             }
             break
             case 'bcgc': case 'bcgroup': {
+		    if (isBanChat) return reply(mess.banChat)
                 if (!isCreator) return replay(`${mess.owner}`)
                 if (!text) return replay(`Where Is The Text?\n\nExample : ${prefix + command} Sihilel Handsome`)
                 let getGroups = await GojoMdNx.groupFetchAllParticipating()
@@ -1823,6 +1875,8 @@ break
             }
             break
             case 'chatinfo': case 'infochat': {
+		    if (isBanChat) return reply(mess.banChat)
+		    if (!isCreator) return reply(`${mess.owner}`)
                 if (!m.quoted) return reply(`Reply Message`)
                 let msg = await m.getQuotedObj()
                 if (!m.quoted.isBaileys) return replay(`The Message Was Not Sent By A Bot!`)
@@ -1845,6 +1899,7 @@ break
             }
 	    break
             case 'listpc': case 'pclist': {
+		    if (isBanChat) return reply(mess.banChat)
                  let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
                  let teks = `⬣ *PERSONAL CHAT LIST*\n\nTotal Chat : ${anu.length} Chat\n\n`
                  for (let i of anu) {
@@ -1871,6 +1926,7 @@ break
              }
              break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
+		    if (isBanChat) return reply(mess.banChat)
             if (!quoted) return replay(`Reply Video/Image With Caption ${prefix + command}\n\n🔥༺HIRUU༒QUEEN༻🔥`)
             reply(mess.wait)
                     if (/image/.test(mime)) {
@@ -1942,6 +1998,7 @@ break
             }
             break
 	        case 'tomp4': case 'tovideo': {
+			if (isBanChat) return reply(mess.banChat)
                 if (!quoted) reply(`Reply Image`)
                 if (!/webp/.test(mime)) return replay(`Reply Sticker With Caption *${prefix + command}*`)
                 reply(mess.wait)
@@ -1953,6 +2010,7 @@ break
             }
             break
             case 'toaud': case 'toaudio': case 'mp3': {
+		    if (isBanChat) return reply(mess.banChat)
             if (!/video/.test(mime) && !/audio/.test(mime)) return replay(`Send/Reply Video/Audio You Want To Use As Audio With Caption ${prefix + command}`)
             if (!quoted) return reply(`Send/Reply Video/Audio You Want To Convert To Audio With Caption ${prefix + command}`)
             reply(mess.wait)
@@ -1963,6 +2021,7 @@ break
             }
             break
             case 'tomp3': case 'todoc':{
+		    if (isBanChat) return reply(mess.banChat)
             if (/document/.test(mime)) return reply(`Send/Reply Video/Audio You Want to Convert Into MP3 With Caption ${prefix + command}`)
             if (!/video/.test(mime) && !/audio/.test(mime)) return replay(`Send/Reply Video/Audio You Want To Convert into MP3 With Caption ${prefix + command}`)
             if (!quoted) return replay(`Send/Reply Video/Audio You Want To Convert Into MP3 With Caption ${prefix + command}`)
@@ -1974,6 +2033,7 @@ break
             }
             break
             case 'tovn': case 'toptt': {
+		    if (isBanChat) return reply(mess.banChat)
             if (!/video/.test(mime) && !/audio/.test(mime)) return reply(`Reply Video/Audio That You Want To Be VN With Caption ${prefix + command}`)
             if (!quoted) return reply(`Reply Video/Audio That You Want To Be VN With Caption ${prefix + command}`)
             reply(mess.wait)
@@ -1984,6 +2044,7 @@ break
             }
             break
             case 'togif': {
+		    if (isBanChat) return reply(mess.banChat)
                 if (!quoted) return reply(`Reply Image`)
                 if (!/webp/.test(mime)) return reply(`Reply Sticker With Caption *${prefix + command}*`)
                 reply(mess.wait)
@@ -1995,6 +2056,7 @@ break
             }
             break
 	        case 'tourl': case 'link': {
+			if (isBanChat) return reply(mess.banChat)
                 reply(mess.wait)
 		        let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
                 let media = await GojoMdNx.downloadAndSaveMediaMessage(quoted)
@@ -2009,6 +2071,7 @@ break
             }
             break
             case 'imagenobgxxx': case 'removebgxxx': case 'remove-bgxxx': case 'removebg': {
+		    if (isBanChat) return reply(mess.banChat)
 	    if (!quoted) return replay(`Send/Reply Image With Caption ${prefix + command}`)
 	    if (!/image/.test(mime)) return replay(`Send/Reply Image With Caption ${prefix + command}`)
 	    if (/webp/.test(mime)) return replay(`Send/Reply Image With Caption ${prefix + command}`)
@@ -2034,6 +2097,7 @@ break
 	    }
 	    break
 	    case 'yts': case 'ytsearch': case 'getyt': {
+		    if (isBanChat) return reply(mess.banChat)
                 if (!text) return replay(`Example : ${prefix + command} blackpink`)
                 let yts = require("yt-search")
                 let search = await yts(text)
@@ -2046,6 +2110,7 @@ break
             }
             break
         case 'google': {
+		if (isBanChat) return reply(mess.banChat)
                 if (!text) return reply(`Example : ${prefix + command} love`)
                 let google = require('google-it')
                 google({'query': text}).then(res => {
@@ -2060,6 +2125,7 @@ break
                 }
                 break
         case 'gimage': case 'googleimage': case 'img': {
+		if (isBanChat) return reply(mess.banChat)
         if (!text) return reply(`Example : ${prefix + command} Hiruu`)
         let gis = require('g-i-s')
         gis(text, async (error, result) => {
@@ -2083,6 +2149,7 @@ break
         }
         break
 	    case 'play': case 'song': case 'ytplay': case 'music': case 'yt': case 'video': {
+		    if (isBanChat) return reply(mess.banChat)
                 if (!text) return reply(`Example : ${prefix + command} Hiruu`)
                 let yts = require("yt-search")
                 let search = await yts(text)
@@ -2113,6 +2180,7 @@ break
             }
             break
 	    case 'ytmp3': case 'getmusic': case 'ytaudio': {
+		    if (isBanChat) return reply(mess.banChat)
                 let { yta } = require('./lib/y2mate')
                 if (!text) return reply(`Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`)
                 let quality = args[1] ? args[1] : '320kbps'
@@ -2123,6 +2191,7 @@ break
             }
             break
             case 'ytmp4': case 'getvideo': case 'ytvideo': {
+		    if (isBanChat) return reply(mess.banChat)
                 let { ytv } = require('./lib/y2mate')
                 if (!text) return reply(`Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`)
                 let quality = args[1] ? args[1] : '360p'
@@ -2298,6 +2367,7 @@ case 'webtonsearch': case 'webtoon':
             }
             break
             case 'wallpaper': {
+		    if (isBanChat) return reply(mess.banChat)
                 if (!text) return reply(`Enter Query Title`)
 		let { wallpaper } = require('./lib/scraper')
                 anu = await wallpaper(text)
@@ -2721,6 +2791,7 @@ case 'webtonsearch': case 'webtoon':
             }
             break
             case 'tiktokmp3x': case 'tiktokaudiox': case 'tiktokmp3': {
+		    if (isBanChat) return reply(mess.banChat)
                 if (!text) return reply(`Enter Query Link!`)
                 reply(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/musically', { url: text }, 'apikey'))
@@ -2739,6 +2810,7 @@ case 'webtonsearch': case 'webtoon':
             }
             break
 	        case 'instagramx': case 'igx': case 'igdlx': case 'ig': case 'instagram': {
+			if (isBanChat) return reply(mess.banChat)
                 if (!text) return reply(`No Query Url!`)
                 reply(mess.wait)
                 if (/(?:\/p\/|\/reel\/|\/tv\/)([^\s&]+)/.test(isUrl(text)[0])) {
@@ -2857,6 +2929,7 @@ To Download Media, Please Click One Of The Buttons Below Or Enter The ytmp3/ytmp
 	    }
 	    break
         case 'ringtone': {
+		if (isBanChat) return reply(mess.banChat)
 		if (!text) return reply(`Example : ${prefix + command} black rover`)
         let { ringtone } = require('./lib/scraper')
 		let anu = await ringtone(text)
@@ -3066,6 +3139,7 @@ View List Of Messages With ${prefix}listmsg\n\n🔥༺HIRUU༒QUEEN༻🔥`)
             }
 	    break
 	    case 'anonymous': {
+		    if (isBanChat) return reply(mess.banChat)
                 if (m.isGroup) return reply('Features Cannot Be Used For Groups!')
 				this.anonymous = this.anonymous ? this.anonymous : {}
 				let buttons = [
@@ -3300,6 +3374,7 @@ reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, 
 	}
                     break
                      case 'alive': case 'bot': case 'hiruu bot': {
+			     if (isBanChat) return reply(mess.banChat)
 			     GojoMdNx.sendMessage(from, { react: { text: `💖`, key: m.key }}) 
 			     let buttons = [
 				     {buttonId: `menu`, buttonText: {displayText: 'MENU'}, type: 1},
@@ -3346,6 +3421,7 @@ reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, 
 		     }
 break
             case 'list': case 'menu': { 
+		    if (isBanChat) return reply(mess.banChat)
 		    GojoMdNx.sendMessage(from, { react: { text: `💖`, key: m.key }}) 
 		    let buttons = [
 			    {buttonId: `allmenu`, buttonText: {displayText: 'ALL MENU'}, type: 1},
@@ -3381,6 +3457,7 @@ break
 	    }
 break
 		    case 'listmenu': {
+			    if (isBanChat) return reply(mess.banChat)
 			    GojoMdNx.sendMessage(from, { react: { text: `💖`, key: m.key }}) 
 		    let buttons = [
 			    {buttonId: `mainmenu`, buttonText: {displayText: 'MAIN MENU'}, type: 1},
@@ -3412,6 +3489,7 @@ break
 		    }
                 break
                 case 'command': {
+			if (isBanChat) return reply(mess.banChat)
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
                     title: `Hi ${pushname}`,
