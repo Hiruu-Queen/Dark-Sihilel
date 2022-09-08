@@ -45,7 +45,7 @@ global.mess = {
     bot: 'මේක මට විතරයි පුලුවන්😌👍 ඔයා පාඩුවේ ඉන්න 😒\n\n🔥༺HIRUU☬QUEEN༻🔥\n\n♥️S+H♥️',
     wait: 'චුට්ටක් ඉන්න බබා 🌸🙏\n\n🔥༺HIRUU༒QUEEN༻🔥\n\n♥️S+H♥️',
     error: 'Error! Maybe Api Key Is Expired🤔!\n\n🔥༺HIRUU☬QUEEN༻🔥\n\n♥️S+H♥️',
-	BanChat: 'මේ චැට් එකට බොට් වැඩ කරන්නේ නෑ.....Sorry\n\n🔥༺HIRUU☬QUEEN༻🔥',
+	banChat: 'මේ චැට් එකට බොට් වැඩ කරන්නේ නෑ.....Sorry\n\n🔥༺HIRUU☬QUEEN༻🔥',
     endLimit: 'Your Daily Limit Has Expired, The Limit Will Be Reset Every 12 Hours\n\n🔥༺HIRUU༒QUEEN༻🔥\n\n♥️S+H♥️',
 }
     global.limitawal = {
