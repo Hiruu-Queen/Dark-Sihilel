@@ -36,15 +36,16 @@ global.hiruu = 'ඉතිම් කෝමද 😜😎'
 global.prefa = ['','!','.',',','#','?','%','&','sh','🦄','🕊️','🐤']
 global.sp = '⭔'
 global.mess = {
-    success: 'ඔන්න හරි 🔥💯\n\n🔥༺HIRUU༒QUEEN༻🔥\n\n♥️S+H♥️',
+    success: 'ඔන්න හරි 🔥💯\n\n🔥༺HIRUU☬QUEEN༻🔥\n\n♥️S+H♥️',
     admin: 'ඇඩ්මින්ලට විතරයි මේක පුලුවන් ළමයෝ 🌝\n\n🔥༺HIRUU༒QUEEN༻🔥\n\n♥️S+H♥️',
-    botAdmin: 'ඇඩ්මින් දියන්කෝ මුලින් 😒\n\n🔥༺HIRUU༒QUEEN༻🔥\n\n♥️S+H♥️',
-    owner: 'Owner ට විතරයි ළමයෝ ඕක පුලුවන් 🙏 \n\n🔥༺HIRUU༒QUEEN༻🔥\n\n♥️S+H♥️',
-    group: 'group වල විතරයි ඕක😒\n\n🔥༺HIRUU༒QUEEN༻🔥\n\n♥️S+H♥️',
-    private: 'inbox විතරයි පුලුවන්🌝\n\n🔥༺HIRUU༒QUEEN༻🔥\n\n♥️S+H♥️',
-    bot: 'මේක මට විතරයි පුලුවන්😌👍 ඔයා පාඩුවේ ඉන්න 😒\n\n🔥༺HIRUU༒QUEEN༻🔥\n\n♥️S+H♥️',
+    botAdmin: 'ඇඩ්මින් දියන්කෝ මුලින් 😒\n\n🔥༺HIRUU☬QUEEN༻🔥\n\n♥️S+H♥️',
+    owner: 'Owner ට විතරයි ළමයෝ ඕක පුලුවන් 🙏 \n\n🔥༺HIRUU☬QUEEN༻🔥\n\n♥️S+H♥️',
+    group: 'group වල විතරයි ඕක😒\n\n🔥༺HIRUU☬QUEEN༻🔥\n\n♥️S+H♥️',
+    private: 'inbox විතරයි පුලුවන්🌝\n\n🔥༺HIRUU☬QUEEN༻🔥\n\n♥️S+H♥️',
+    bot: 'මේක මට විතරයි පුලුවන්😌👍 ඔයා පාඩුවේ ඉන්න 😒\n\n🔥༺HIRUU☬QUEEN༻🔥\n\n♥️S+H♥️',
     wait: 'චුට්ටක් ඉන්න බබා 🌸🙏\n\n🔥༺HIRUU༒QUEEN༻🔥\n\n♥️S+H♥️',
-    error: 'Error! Maybe Api Key Is Expired🤔!\n\n🔥༺HIRUU༒QUEEN༻🔥\n\n♥️S+H♥️',
+    error: 'Error! Maybe Api Key Is Expired🤔!\n\n🔥༺HIRUU☬QUEEN༻🔥\n\n♥️S+H♥️',
+	BanChat: 'මේ චැට් එකට බොට් වැඩ කරන්නේ නෑ.....Sorry\n\n🔥༺HIRUU☬QUEEN༻🔥',
     endLimit: 'Your Daily Limit Has Expired, The Limit Will Be Reset Every 12 Hours\n\n🔥༺HIRUU༒QUEEN༻🔥\n\n♥️S+H♥️',
 }
     global.limitawal = {
