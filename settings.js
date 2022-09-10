@@ -36,7 +36,6 @@ global.hiruu = 'ඉතිම් කෝමද 😜😎'
 global.prefa = ['','!','.',',','#','?','%','&','sh','🦄','🕊️','🐤']
 global.sp = '⭔'
 global.mess = {
-	banChat: 'මේ චැට් එකට බොට් වැඩ කරන්නේ නෑ.....Sorry\n\n🔥༺HIRUU☬QUEEN༻🔥',
     success: 'ඔන්න හරි 🔥💯\n\n🔥༺HIRUU☬QUEEN༻🔥\n\n♥️S+H♥️',
     admin: 'ඇඩ්මින්ලට විතරයි මේක පුලුවන් ළමයෝ 🌝\n\n🔥༺HIRUU༒QUEEN༻🔥\n\n♥️S+H♥️',
     botAdmin: 'ඇඩ්මින් දියන්කෝ මුලින් 😒\n\n🔥༺HIRUU☬QUEEN༻🔥\n\n♥️S+H♥️',
