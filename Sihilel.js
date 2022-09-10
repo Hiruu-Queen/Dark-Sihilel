@@ -1650,7 +1650,6 @@ break
 	    }
             break
                case 'group': case 'grup': {
-		       if (!m.isBanChat) return replay(`${mess.banChat}`)
                 if (!m.isGroup) return replay(`${mess.group}`)
                 if (!isBotAdmins) return replay(`${mess.botAdmin}`)
                 if (!isAdmins) return replay(`${mess.admin}`)
