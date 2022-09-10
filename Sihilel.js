@@ -1660,8 +1660,8 @@ break
                     await GojoMdNx.groupSettingUpdate(m.chat, 'not_announcement').then((res) => reply(`Successful Opening The Group\n\n🔥༺HIRUU༒QUEEN༻🔥`)).catch((err) => reply(jsonformat(err)))
                 } else {
                 let buttons = [
-                        { buttonId: 'group open', buttonText: { displayText: '_OPEN_' }, type: 1 },
-                        { buttonId: 'group close', buttonText: { displayText: '_CLOSE_' }, type: 1 }
+                        { buttonId: 'group open', buttonText: { displayText: 'OPEN' }, type: 1 },
+                        { buttonId: 'group close', buttonText: { displayText: 'CLOSE' }, type: 1 }
                     ]
                     await GojoMdNx.sendButtonText(m.chat, buttons, `Group Mode`, GojoMdNx.user.name, m)
              }
