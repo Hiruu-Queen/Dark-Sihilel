@@ -88,7 +88,6 @@ async function startGojoMdNx() {
         if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
         m = smsg(GojoMdNx, mek, store)
         require("./Sihilel")(GojoMdNx, m, chatUpdate, store) 
-	require("./Hiruu")(GojoMdNx, m, chatUpdate, store)
         } catch (err) {
             console.log(err)
         }
